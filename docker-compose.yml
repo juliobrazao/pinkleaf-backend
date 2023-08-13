@@ -1,0 +1,5 @@
+services:
+  backend:
+    build: ./app
+    ports:
+      - 33003:3000
