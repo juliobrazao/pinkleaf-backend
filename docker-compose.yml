@@ -1,6 +1,6 @@
 services:
   backend:
     build:
-      dockerfile: Dockerfile
+      dockerfile: ./Dockerfile
     ports:
       - 33003:3000
