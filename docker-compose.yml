@@ -22,9 +22,6 @@ services:
       MYSQL_ROOT_PASSWORD: "lol2020@"
     ports:
       - "33666:3306"
-    volumes:
-      - ./configs/docker-entrypoint-initdb.d:/docker-entrypoint-initdb.d
-      - mysql-data:/var/lib/mysql
     networks:
       - pinkleaf-network
 
