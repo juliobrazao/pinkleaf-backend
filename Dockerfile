@@ -6,4 +6,4 @@ RUN npm cache verify
 COPY . /src
 RUN npm i
 EXPOSE 3000
-CMD ["npm", "start"]s
+CMD ["npm", "start"]
