@@ -1,6 +1,33 @@
 services:
-  backend:
+  pinkleaf-backend:
+    container_name: pinkleaf-backend
     build:
-      dockerfile: ./Dockerfile
+      context: .
+      network: host
+    command: npm run nodemon
+    volumes:
+      - .:/src
+      - /src/node_modules
+    depends_on:
+      - pinkleaf-mysql
     ports:
       - 33003:3000
+    networks:
+      - pinkleaf-network
+
+  pinkleaf-mysql:
+    container_name: pinkleaf-mysql
+    image: mysql:latest
+    environment:
+      MYSQL_ROOT_PASSWORD: "lol2020@"
+    ports:
+      - "33666:3306"
+    volumes:
+      - ./configs/docker-entrypoint-initdb.d:/docker-entrypoint-initdb.d
+      - mysql-data:/var/lib/mysql
+    networks:
+      - pinkleaf-network
+
+networks:
+  pinkleaf-network:
+    external: true
